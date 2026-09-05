@@ -26,7 +26,7 @@
 # .github/workflows/e2e.yml and tests/e2e/AGENTS.md.
 #
 # Prerequisites:
-#     - `pn` CLI available (e.g. via `pip install -e .`).
+#     - `pn` CLI available (e.g. via `uv sync`, then run through `uv run`).
 #     - `maestro` CLI on PATH (https://maestro.dev/).
 #     - For Android: an emulator running.
 #     - For iOS: a simulator running.
@@ -64,7 +64,8 @@ case "$PLATFORM" in
 esac
 
 if ! command -v pn > /dev/null; then
-  echo "Error: 'pn' CLI not found on PATH. Install via 'pip install -e .'" >&2
+  echo "Error: 'pn' CLI not found on PATH. Run 'uv sync', then invoke this" >&2
+  echo "script through 'uv run ./scripts/run-e2e.sh ...'." >&2
   exit 2
 fi
 
